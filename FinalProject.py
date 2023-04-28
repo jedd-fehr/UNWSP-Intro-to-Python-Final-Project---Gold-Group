@@ -16,3 +16,11 @@ student_info_list = [
      "rhaeder", "0484928($@"),
     #Create the rest of the lines of the database. I've created the fields, you guys just need to create some rows
     #to get the total rows up to 10. Follow the format I created.
+    (01707329, "Jacob Cisewski", 10, "Undecided", "Cisewski Homeschool", "jccisewski@students.unwsp.edu",
+     "Jccisewski", "129493!@"),
+    (93723740, "Joe Banks", 9, "Business", "Armstrong High School", "jumpingjehosaphat@gmail.com",
+     "jumpinjoe", "823749%&"),
+    (46284249, "Liam Nelson", 12, "Engineering", "Wayzata High School", "nelson.liam.12@gmail.com",
+     "lnelson12", "6478446$%"),
+    (98757248, "Jeffrey Bummer", 7, "Psychology", "Hopkins High School", "jkbummer13@gmail.com",
+     "jeffbum30", "8236342!*"),
