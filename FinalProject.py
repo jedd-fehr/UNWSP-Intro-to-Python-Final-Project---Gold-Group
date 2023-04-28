@@ -16,7 +16,7 @@ student_info_list = [
      "rhaeder", "0484928($@"),
     #Create the rest of the lines of the database. I've created the fields, you guys just need to create some rows
     #to get the total rows up to 10. Follow the format I created.
-    (01707329, "Jacob Cisewski", 10, "Undecided", "Cisewski Homeschool", "jccisewski@students.unwsp.edu",
+    (11707329, "Jacob Cisewski", 10, "Undecided", "Cisewski Homeschool", "jccisewski@students.unwsp.edu",
      "Jccisewski", "129493!@"),
     (93723740, "Joe Banks", 9, "Business", "Armstrong High School", "jumpingjehosaphat@gmail.com",
      "jumpinjoe", "823749%&"),
@@ -24,3 +24,17 @@ student_info_list = [
      "lnelson12", "6478446$%"),
     (98757248, "Jeffrey Bummer", 7, "Psychology", "Hopkins High School", "jkbummer13@gmail.com",
      "jeffbum30", "8236342!*"),
+    (94378594, "Blake Anderson", 11, "Engineering", "Parnassus Preparatory", "banderson3@students.unwsp.edu",
+     "banderson", "520398^$"),
+    (66546707, "Henry Smith", 12, "Undecided", "Legacy Christian Academy", "fastrunner404@gmail.com",
+     "zoom1232", "654265*!"),
+    (59597245, "Peter Mitchell", 8, "Aviation", "SFTI program", "f14flier@outlook.com",
+     "Maveric", "320923@#"),
+    ]
+
+cursor.executemany("insert into student values (?,?,?,?,?,?,?,?)", student_info_list)
+
+for row in cursor.execute("select * from student"):
+    print(row)
+
+connection.close()
