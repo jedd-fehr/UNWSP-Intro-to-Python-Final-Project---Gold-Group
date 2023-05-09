@@ -35,6 +35,21 @@ student_info_list = [
 cursor.executemany("insert into student values (?,?,?,?,?,?,?,?)", student_info_list)
 
 for row in cursor.execute("select * from student"):
-    print(row)
+    print(row) 
 
+check = str(input("Would you like to make any changes? (y or n)"))
+if check == "y":
+    row_ask = str(input("What student would you like to make changes for? (Please type full name, first and last)"))
+    col_ask = int(input("What column do you want to make changes for? (1-8)"))
+    if col_ask == 1:
+        data = int(input(f"What is {row_ask}'s new ID number?"))
+        cursor.execute(f'UPDATE student SET student_id = {data} WHERE student_name == "{row_ask}"')
+    if col_ask == 2:
+        data = str(input(f"What is {row_ask}'s new name?"))
+        cursor.execute(f'UPDATE student SET student_name = {data} WHERE student_name == "{row_ask}"')
+    if col_ask == 3:
+        data = int(input(f"How many credits does {row_ask} now have?"))
+        cursor.execute(f'UPDATE student SET number_of_credits = {data} WHERE student_name == "{row_ask}"')
+       #Fill in the rest of the data. It is really easy if you just copy and paste. 
+      #Also, one of you two will need to add a loop that loops wether the user wants the table edited.
 connection.close()
