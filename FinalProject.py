@@ -52,4 +52,19 @@ if check == "y":
         cursor.execute(f'UPDATE student SET number_of_credits = {data} WHERE student_name == "{row_ask}"')
        #Fill in the rest of the data. It is really easy if you just copy and paste. 
       #Also, one of you two will need to add a loop that loops wether the user wants the table edited.
+    if col_ask == 4:
+        data = str(input(f"What is {row_ask}'s new major?"))
+        cursor.execute(f'UPDATE student SET major = {data} WHERE student_name == "{row_ask}"')
+    if col_ask == 5:
+            data = str(input(f"What is {row_ask}'s new high school?"))
+            cursor.execute(f'UPDATE student SET high_school = {data} WHERE student_name == "{row_ask}"')
+    if col_ask == 6:
+            data = str(input(f"What is {row_ask}'s new email?"))
+            cursor.execute(f'UPDATE student SET email = {data} WHERE student_name == "{row_ask}"')
+    if col_ask == 7:
+            data = str(input(f"What is {row_ask}'s new username?"))
+            cursor.execute(f'UPDATE student SET username = {data} WHERE student_name == "{row_ask}"')
+    if col_ask == 8:
+            data = str(input(f"What is {row_ask}'s new password?"))
+            cursor.execute(f'UPDATE student SET password = {data} WHERE student_name == "{row_ask}"')
 connection.close()
