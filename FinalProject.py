@@ -14,8 +14,6 @@ student_info_list = [
      "adeepak", "1034869*%"),
     (48396873, "Richard Haeder", 10, "Communications", "Maple Grove Senior High", "bobejoans@gmail.com",
      "rhaeder", "0484928($@"),
-    #Create the rest of the lines of the database. I've created the fields, you guys just need to create some rows
-    #to get the total rows up to 10. Follow the format I created.
     (11707329, "Jacob Cisewski", 10, "Undecided", "Cisewski Homeschool", "jccisewski@students.unwsp.edu",
      "Jccisewski", "129493!@"),
     (93723740, "Joe Banks", 9, "Business", "Armstrong High School", "jumpingjehosaphat@gmail.com",
@@ -34,37 +32,46 @@ student_info_list = [
 
 cursor.executemany("insert into student values (?,?,?,?,?,?,?,?)", student_info_list)
 
+print("The following is the student database:\n")
 for row in cursor.execute("select * from student"):
     print(row) 
+print("")
 
-check = str(input("Would you like to make any changes? (y or n)"))
-if check == "y":
-    row_ask = str(input("What student would you like to make changes for? (Please type full name, first and last)"))
-    col_ask = int(input("What column do you want to make changes for? (1-8)"))
-    if col_ask == 1:
-        data = int(input(f"What is {row_ask}'s new ID number?"))
-        cursor.execute(f'UPDATE student SET student_id = {data} WHERE student_name == "{row_ask}"')
-    if col_ask == 2:
-        data = str(input(f"What is {row_ask}'s new name?"))
-        cursor.execute(f'UPDATE student SET student_name = {data} WHERE student_name == "{row_ask}"')
-    if col_ask == 3:
-        data = int(input(f"How many credits does {row_ask} now have?"))
-        cursor.execute(f'UPDATE student SET number_of_credits = {data} WHERE student_name == "{row_ask}"')
-       #Fill in the rest of the data. It is really easy if you just copy and paste. 
-      #Also, one of you two will need to add a loop that loops wether the user wants the table edited.
-    if col_ask == 4:
-        data = str(input(f"What is {row_ask}'s new major?"))
-        cursor.execute(f'UPDATE student SET major = {data} WHERE student_name == "{row_ask}"')
-    if col_ask == 5:
-            data = str(input(f"What is {row_ask}'s new high school?"))
-            cursor.execute(f'UPDATE student SET high_school = {data} WHERE student_name == "{row_ask}"')
-    if col_ask == 6:
-            data = str(input(f"What is {row_ask}'s new email?"))
-            cursor.execute(f'UPDATE student SET email = {data} WHERE student_name == "{row_ask}"')
-    if col_ask == 7:
-            data = str(input(f"What is {row_ask}'s new username?"))
-            cursor.execute(f'UPDATE student SET username = {data} WHERE student_name == "{row_ask}"')
-    if col_ask == 8:
-            data = str(input(f"What is {row_ask}'s new password?"))
-            cursor.execute(f'UPDATE student SET password = {data} WHERE student_name == "{row_ask}"')
+while True:
+    check = str(input("Would you like to make any changes? (y or n)\n"))
+    try:
+        if check == "y":
+            row_ask = str(input("What student would you like to make changes for? "
+                                "(Please type full name, first and last)\n"))
+            col_ask = int(input("What column do you want to make changes for? (1-8)\n"))
+            if col_ask == 1:
+                data = int(input(f"What is {row_ask}'s new ID number?\n"))
+                cursor.execute(f'UPDATE student SET student_id = {data} WHERE student_name == "{row_ask}"')
+            elif col_ask == 2:
+                data = str(input(f"What is {row_ask}'s new name?\n"))
+                cursor.execute(f'UPDATE student SET student_name = "{data}" WHERE student_name == "{row_ask}"')
+            elif col_ask == 3:
+                data = int(input(f"How many credits does {row_ask} now have?\n"))
+                cursor.execute(f'UPDATE student SET number_of_credits = {data} WHERE student_name == "{row_ask}"')
+            elif col_ask == 4:
+                data = str(input(f"What is {row_ask}'s new major?\n"))
+                cursor.execute(f'UPDATE student SET major = "{data}" WHERE student_name == "{row_ask}"')
+            elif col_ask == 5:
+                data = str(input(f"What is {row_ask}'s new high school?\n"))
+                cursor.execute(f'UPDATE student SET high_school = "{data}" WHERE student_name == "{row_ask}"')
+            elif col_ask == 6:
+                data = str(input(f"What is {row_ask}'s new email?\n"))
+                cursor.execute(f'UPDATE student SET email = "{data}" WHERE student_name == "{row_ask}"')
+            elif col_ask == 7:
+                data = str(input(f"What is {row_ask}'s new username?\n"))
+                cursor.execute(f'UPDATE student SET username = "{data}" WHERE student_name == "{row_ask}"')
+            elif col_ask == 8:
+                data = str(input(f"What is {row_ask}'s new password?\n"))
+                cursor.execute(f'UPDATE student SET password = "{data}" WHERE student_name == "{row_ask}"')
+        else:
+            break
+
+    except:
+        print("This student does not exist. Please make sure to use existing students and columns.")
+
 connection.close()
